@@ -26,6 +26,28 @@ alongside `index.html`:
 To turn off the header logo image (text-only wordmark), set `logo: ""` in
 `content.js`.
 
+## Troubleshooting: page loads but sections are empty
+
+If you see only a bare "Lab" header, an avatar with no name, and an empty
+page (no About/Research/Tools/etc. sections, footer showing just "©"), it
+means **`content.js` never loaded** — `render.js` fell back to empty
+defaults. `render.js` now shows a red banner and a console error
+(`window.SITE is undefined`) when this happens, so it fails loudly instead
+of silently.
+
+Common cause: the site was deployed as a **Cloudflare Worker**
+(`*.workers.dev`) instead of **Cloudflare Pages** (`*.pages.dev`). A plain
+Worker doesn't serve static files like `content.js` automatically — only
+Pages (or a Worker explicitly configured with static-asset serving) does.
+
+To check: open DevTools → Network tab → reload → look at the status of
+`content.js`, `render.js`, and `styles.css`. A 404 (or any non-200)
+confirms it.
+
+Fix: redeploy via Cloudflare Pages instead — dashboard → Workers & Pages →
+Create → **Pages** → upload the folder (or connect the repo), build
+command empty, output directory `/`.
+
 ## Edit content
 
 Everything on the page is driven by `content.js`. Edit that file only for

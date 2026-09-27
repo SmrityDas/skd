@@ -16,6 +16,16 @@
         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
     }[c]));
 
+    /* Fail loudly if content.js never loaded, instead of silently
+       rendering an empty page with only fallback text. */
+    if (!window.SITE) {
+        console.error('[RSV Lab] content.js did not load (window.SITE is undefined). Check DevTools → Network tab for a 404 or blocked request on content.js.');
+        const banner = document.createElement('div');
+        banner.textContent = 'Content failed to load — content.js was not found or did not run. Check your deployment (see README "Troubleshooting").';
+        banner.style.cssText = 'background:#fee2e2;color:#991b1b;padding:14px 20px;text-align:center;font-family:sans-serif;font-size:0.9rem;border-bottom:1px solid #fecaca;';
+        document.body.prepend(banner);
+    }
+
     /* Hide a section by ID */
     const hideSection = id => {
         const el = $(id);
