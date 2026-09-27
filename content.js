@@ -27,7 +27,7 @@ const SITE = {
 
   /* ---------- SOCIAL / CONTACT ----------
      Set any field to "" to hide its icon. */
-  github:    "https://github.com/KamolDas",
+  github:    " ",
   twitter:   "https://x.com/KDKamol",
   linkedin:  "https://www.linkedin.com/in/kamol-das-7a4b0b1b7/",
   youtube:   "https://www.youtube.com/@RSVLab",
