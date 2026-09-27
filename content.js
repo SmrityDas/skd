@@ -23,7 +23,7 @@ const SITE = {
   year:         "2026",
 
   /* Logo shown in header. Leave "" for text-only logo. */
-  logo: "https://rsv8lab.github.io/rsvlab-logo.png",
+  logo: "https://github.com/rsv8lab/skd/blob/main/rsvlab-logo.png",
 
   /* ---------- SOCIAL / CONTACT ----------
      Set any field to "" to hide its icon. */
