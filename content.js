@@ -39,7 +39,7 @@ const SITE = {
   location:  "Department of Microbiology, University of Chittagong · Ramakrishna Mission, Hathazari, Chittagong, Bangladesh",
 
   /* ---------- PARTNER LAB ---------- */
-  partnerLabUrl:  "https://ecobioremediation.pages.dev/",
+  partnerLabUrl:  "https://rsv8lab-github-io.pages.dev/#",
   partnerLabText: "Eco-Bio Lab",
 
   /* ---------- NAV ---------- */
