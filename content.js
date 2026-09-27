@@ -1,13 +1,13 @@
 /* ============================================================
    RSV LAB — SITE CONTENT
    ------------------------------------------------------------
-   ✏️ THIS IS THE ONLY FILE YOU NORMALLY NEED TO EDIT.
+   ✏️ THIS IS THE ONLY FILE YOU EDIT FOR CONTENT.
    • Change text between " " — keep quotes and commas.
-   • Add a card → paste a new { ... } block.
+   • Add a card → paste a new { ... } block inside cards: [ ].
    • Remove a card → delete its { ... } block.
-   • Empty arrays [] hide their section.
+   • Empty arrays [] hide their section automatically.
    • Colours: var(--primary-purple|blue|orange|cyan|green|red)
-              or any hex "#E11D48".
+              or any hex like "#E11D48".
    ============================================================ */
 
 const SITE = {
@@ -22,12 +22,10 @@ const SITE = {
   founderName:  "Kamol Das",
   year:         "2026",
 
-  /* Lab logo shown in the header next to the wordmark.
-     Upload the image file alongside index.html and set its filename here.
-     Leave "" to show text-only logo. */
-  logo:         "rsvlab-logo.png",
+  /* Logo shown in header. Leave "" for text-only logo. */
+  logo: "rsvlab-logo.png",
 
-  /* ---------- SOCIAL / CONTACT LINKS ----------
+  /* ---------- SOCIAL / CONTACT ----------
      Set any field to "" to hide its icon. */
   github:    "https://github.com/KamolDas",
   twitter:   "https://x.com/KDKamol",
@@ -74,7 +72,7 @@ const SITE = {
     cards: [
       { icon: "fa-vial-circle-check", color: "var(--primary-purple)", title: "AST Methodology",                 text: "Kirby-Bauer disk diffusion and MIC/broth microdilution workflows aligned to CLSI M100 and EUCAST breakpoint tables." },
       { icon: "fa-shield-virus",      color: "var(--primary-blue)",   title: "AMR Epidemiology",                text: "Antimicrobial resistance patterns in ICU, hospital, and diagnostic-centre settings across Bangladesh and South Asia." },
-      { icon: "fa-diagram-project",   color: "var(--primary-orange)", title: "Data Quality & Interoperability", text: "A machine-learning-enabled framework for laboratory data quality, resistance-pattern detection, and sentinel-site interoperability — the core of the LSHTM PhD proposal." },
+      { icon: "fa-diagram-project",   color: "var(--primary-orange)", title: "Data Quality & Interoperability", text: "A machine-learning-enabled framework for laboratory data quality, resistance-pattern detection, and sentinel-site interoperability." },
       { icon: "fa-shield-halved",     color: "var(--primary-purple)", title: "Open Science",                    text: "Verified, source-checked breakpoint data, reproducible Python tooling, and plans for Zenodo/ORCID-linked open datasets." },
     ],
   },
@@ -84,8 +82,8 @@ const SITE = {
     title:    "Tools & Software",
     subtitle: "Open tooling built around the RSV Lab AST workflow.",
     cards: [
-      { icon: "fa-desktop",    color: "var(--primary-purple)", title: "RSV Lab Advanced AST Analysis Tool", text: "A Python desktop GUI — the centerpiece of the MS thesis — with an MDR/XDR/PDR classifier, ML clustering/detection modules, and a CLSI/EUCAST breakpoint lookup system.", link: "https://github.com/KamolDas", cta: "View on GitHub" },
-      { icon: "fa-code",       color: "var(--primary-blue)",   title: "rsv_formulas_library.py",            text: "A Python library of AST/MIC statistics and ML-metric formulas underlying the tool's statistical and methodological documentation set.",                              link: "https://github.com/KamolDas", cta: "View on GitHub" },
+      { icon: "fa-desktop",    color: "var(--primary-purple)", title: "RSV Lab Advanced AST Analysis Tool", text: "A Python desktop GUI with an MDR/XDR/PDR classifier, ML clustering/detection modules, and a CLSI/EUCAST breakpoint lookup system.", link: "https://github.com/KamolDas", cta: "View on GitHub" },
+      { icon: "fa-code",       color: "var(--primary-blue)",   title: "rsv_formulas_library.py",            text: "A Python library of AST/MIC statistics and ML-metric formulas underlying the tool's statistical and methodological documentation set.", link: "https://github.com/KamolDas", cta: "View on GitHub" },
       { icon: "fa-table-list", color: "var(--primary-orange)", title: "Verified CLSI Breakpoint Table",     text: "A hand-checked breakpoint dataset cross-verified against CLSI M100-Ed36 (2026), built after fabricated AI-generated breakpoints were caught and corrected." },
     ],
   },
@@ -96,7 +94,7 @@ const SITE = {
     subtitle: "Work in progress — no peer-reviewed publications yet. Items below are current outputs and drafts, not published articles.",
     items: [
       { title: "RSV Laboratory AST Analysis Tool: Complete Statistical & Methodological Documentation Set", authors: "Kamol Das", journal: "5-part LaTeX book (scrbook), v2.2 — Full 91-Equation Edition (Sept 2026) — in preparation" },
-      { title: "Strengthening Digital Antimicrobial Resistance Surveillance in Bangladesh: A Machine-Learning-Enabled Framework for Laboratory Data Quality, Resistance-Pattern Detection, and Sentinel-Site Interoperability", authors: "Kamol Das", journal: "PhD research proposal draft — targeting AMR Centre" },
+      { title: "Strengthening Digital Antimicrobial Resistance Surveillance in Bangladesh: A Machine-Learning-Enabled Framework", authors: "Kamol Das", journal: "PhD research proposal draft — targeting AMR Centre" },
       { title: "AST/AMR manuscript (IMRaD format)", authors: "Kamol Das", journal: "In preparation — target venues: JAC-AMR, ARIC" },
     ],
   },
@@ -149,3 +147,7 @@ const SITE = {
     copyright: "© 2026 RSV Lab — Kamol Das. All rights reserved.",
   },
 };
+
+/* Expose to window so render.js can read it regardless of how
+   the file is loaded (script tag, worker, module bundler). */
+window.SITE = SITE;
