@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSV Lab | Official Website</title>
+    <meta name="description" content="RSV Lab advances antimicrobial susceptibility testing, AMR surveillance, and bioinformatics research. Founded by Kamol Das, University of Chittagong.">
+    <link rel="canonical" href="https://rsv8lab-github-io.pages.dev/">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#06283d">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RSV Lab | Official Website">
+    <meta property="og:description" content="Advancing antimicrobial susceptibility testing, AMR surveillance, and bioinformatics research.">
+    <meta property="og:url" content="https://rsv8lab-github-io.pages.dev/">
+    <meta property="og:image" content="https://rsv8lab-github-io.pages.dev/rsvlab-logo.png">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon" type="image/png" href="rsvlab-logo.png">
+    <!-- Apple touch icon: separate file, upload apple-touch-icon.png alongside index.html -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="#" class="nav-logo" id="nav-logo"></a>
+            <nav class="nav-links" id="nav-links"></nav>
+            <div class="nav-icons" id="nav-icons"></div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title" id="hero-title"></h1>
+            <p class="hero-subtitle" id="hero-subtitle"></p>
+            <div class="founder-badge" id="hero-badge"></div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title" id="about-title"></h2>
+            <p class="section-subtitle" id="about-subtitle"></p>
+            <div class="card-grid" id="about-cards"></div>
+        </div>
+    </section>
+
+    <!-- Research -->
+    <section class="section" id="research" style="background-color: var(--white);">
+        <div class="container">
+            <h2 class="section-title" id="research-title"></h2>
+            <p class="section-subtitle" id="research-subtitle"></p>
+            <div class="card-grid" id="research-cards"></div>
+        </div>
+    </section>
+
+    <!-- Tools -->
+    <section class="section" id="tools">
+        <div class="container">
+            <h2 class="section-title" id="tools-title"></h2>
+            <p class="section-subtitle" id="tools-subtitle"></p>
+            <div class="card-grid" id="tools-cards"></div>
+        </div>
+    </section>
+
+    <!-- Publications -->
+    <section class="section" id="publications" style="background-color: var(--white);">
+        <div class="container">
+            <h2 class="section-title" id="publications-title"></h2>
+            <p class="section-subtitle" id="publications-subtitle"></p>
+            <div class="publication-list" id="publications-list"></div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section" id="team">
+        <div class="container">
+            <h2 class="section-title" id="team-title"></h2>
+            <div class="founder-container" id="team-founder"></div>
+            <div class="member-grid" id="team-members"></div>
+        </div>
+    </section>
+
+    <!-- Community -->
+    <section class="section" id="community" style="background-color: var(--white);">
+        <div class="container">
+            <h2 class="section-title" id="community-title"></h2>
+            <p class="section-subtitle" id="community-subtitle"></p>
+            <div class="card-grid" id="community-channels"></div>
+            <div class="stats-strip" id="community-stats"></div>
+            <h3 class="community-subhead" id="community-contrib-head">Contributors &amp; Members</h3>
+            <div class="contributor-grid" id="community-contributors"></div>
+        </div>
+    </section>
+
+    <!-- Collaboration -->
+    <section class="collab-section" id="collab-section">
+        <div class="container">
+            <h2 id="collab-title"></h2>
+            <p id="collab-text"></p>
+            <a id="collab-btn" class="btn" target="_blank" rel="noopener"></a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title" id="contact-title"></h2>
+            <p class="section-subtitle" id="contact-subtitle"></p>
+            <div class="contact-grid" id="contact-grid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p id="footer-copy"></p>
+            <div class="footer-links" id="footer-links"></div>
+        </div>
+    </footer>
+
+    <!-- Load order matters: content first, then renderer -->
+    <script src="content.js"></script>
+    <script src="render.js"></script>
+</body>
+</html>
