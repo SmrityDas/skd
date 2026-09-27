@@ -3,162 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSV Lab | AMR Surveillance & AST Analysis</title>
-    <meta name="description" content="A microbiology and bioinformatics research effort building open tools for antimicrobial susceptibility testing (AST) analysis, CLSI/EUCAST-aligned interpretation, and machine-learning-assisted AMR surveillance in Bangladesh.">
+    <title>RSV Lab | Official Website</title>
+    <meta name="description" content="RSV Lab advances antimicrobial susceptibility testing, AMR surveillance, and bioinformatics research. Founded by Kamol Das, University of Chittagong.">
     <link rel="canonical" href="https://rsv8lab-github-io.pages.dev/">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#4C1D95">
+    <meta name="theme-color" content="#06283d">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="RSV Lab | AMR Surveillance & AST Analysis">
-    <meta property="og:description" content="Open tools for AST analysis and ML-assisted AMR surveillance in Bangladesh.">
+    <meta property="og:title" content="RSV Lab | Official Website">
+    <meta property="og:description" content="Advancing antimicrobial susceptibility testing, AMR surveillance, and bioinformatics research.">
     <meta property="og:url" content="https://rsv8lab-github-io.pages.dev/">
-    <meta property="og:image" content="https://rsv8lab-github-io.pages.dev/assets/og-image.png">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://rsv8lab-github-io.pages.dev/rsvlab-logo.png">
+    <meta name="twitter:card" content="summary">
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+    <link rel="icon" type="image/png" href="rsvlab-logo.png">
+    <!-- Apple touch icon: separate file, upload apple-touch-icon.png alongside index.html -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        :root {
-            --primary-purple: #7C3AED;
-            --primary-blue:   #2563EB;
-            --primary-cyan:   #06B6D4;
-            --dark-navy:      #0F172A;
-            --text-dark:      #1e293b;
-            --text-light:     #64748b;
-            --white:          #ffffff;
-            --light-bg:       #f5f3ff;
-            --card-padding:   30px;
-            --grid-gap:       25px;
-            --border-radius:  12px;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .accent { color: var(--primary-purple); }
-
-        .header { background: var(--white); box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-        .navbar { display: flex; align-items: center; justify-content: space-between; height: 70px; }
-        .nav-logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--text-dark); }
-        .nav-logo span:first-child { color: var(--primary-purple); }
-        .nav-links { display: flex; gap: 24px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 500; transition: color 0.2s; font-size: 0.95rem; }
-        .nav-links a:hover { color: var(--primary-purple); }
-        .nav-links a.partner-link { background: var(--primary-purple); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; }
-        .nav-links a.partner-link:hover { background: var(--dark-navy); }
-        .nav-icons { display: flex; gap: 15px; }
-        .nav-icons a { color: var(--text-light); font-size: 1.2rem; }
-        .nav-icons a:hover { color: var(--primary-purple); }
-
-        .hero { padding: 80px 0; text-align: center; background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); }
-        .hero-title { font-size: 3rem; font-weight: 700; margin-bottom: 15px; }
-        .hero-subtitle { font-size: 1.2rem; color: var(--text-light); max-width: 720px; margin: 0 auto 25px; }
-        .founder-badge { display: inline-flex; align-items: center; gap: 10px; background: var(--white); padding: 8px 20px; border-radius: 50px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); font-weight: 500; }
-        .founder-badge img { width: 28px; height: 28px; border-radius: 50%; }
-
-        .section { padding: 80px 0; }
-        .section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 10px; }
-        .section-subtitle { text-align: center; color: var(--text-light); margin-bottom: 50px; max-width: 720px; margin-left: auto; margin-right: auto; }
-
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--grid-gap); }
-        .card { background: var(--white); border-radius: var(--border-radius); padding: var(--card-padding); border: 1px solid #e2e8f0; border-top: 4px solid var(--card-accent, var(--primary-purple)); transition: transform 0.2s, box-shadow 0.2s; }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-        .card-icon { font-size: 2rem; color: var(--card-accent, var(--primary-purple)); margin-bottom: 15px; }
-        .card-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
-        .card-text { color: var(--text-light); font-size: 0.95rem; }
-        .card-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; color: var(--primary-purple); text-decoration: none; font-weight: 500; }
-        .card-link:hover { text-decoration: underline; }
-
-        .publication-list { display: flex; flex-direction: column; gap: 25px; }
-        .publication-item { background: var(--white); padding: 25px; border-radius: var(--border-radius); border: 1px solid #e2e8f0; }
-        .pub-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 5px; }
-        .pub-authors, .pub-journal { color: var(--text-light); font-size: 0.9rem; }
-        .pub-journal { margin-bottom: 10px; }
-        .pub-link { color: var(--primary-purple); text-decoration: none; font-weight: 500; }
-        .pub-link:hover { text-decoration: underline; }
-
-        .founder-container { display: flex; align-items: center; gap: 40px; max-width: 800px; margin: 0 auto 50px; }
-        .founder-avatar { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
-        .founder-info h3 { font-size: 1.5rem; margin-bottom: 5px; }
-        .founder-info .role { color: var(--primary-purple); font-weight: 500; margin-bottom: 10px; }
-        .founder-social { display: flex; gap: 15px; margin-top: 15px; }
-        .founder-social a { color: var(--text-light); font-size: 1.3rem; }
-        .founder-social a:hover { color: var(--primary-purple); }
-
-        .member-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
-        .member { text-align: center; padding: 20px; border-radius: var(--border-radius); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit; display: block; }
-        .member:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-        .member img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; border: 3px solid var(--light-bg); }
-        .member-name { font-weight: 600; font-size: 0.95rem; }
-        .member-role { font-size: 0.8rem; color: var(--text-light); margin-top: 2px; }
-
-        .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin: 60px 0; padding: 30px; background: var(--light-bg); border-radius: var(--border-radius); text-align: center; }
-        .stat-value { font-size: 2rem; font-weight: 700; color: var(--primary-purple); line-height: 1.1; }
-        .stat-label { font-size: 0.85rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
-        .community-subhead { font-size: 1.4rem; font-weight: 600; text-align: center; margin: 40px 0 30px; }
-        .contributor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 25px; }
-        .contributor { text-align: center; padding: 20px; border-radius: var(--border-radius); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit; display: block; }
-        .contributor:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-        .contributor img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; border: 3px solid var(--light-bg); }
-        .contributor-name { font-weight: 600; font-size: 0.95rem; }
-        .contributor-role { font-size: 0.8rem; color: var(--text-light); margin-top: 2px; }
-
-        .collab-section { background: var(--light-bg); padding: 60px 0; text-align: center; }
-        .collab-section h2 { font-size: 1.8rem; margin-bottom: 15px; }
-        .collab-section p { color: var(--text-light); max-width: 620px; margin: 0 auto 25px; }
-        .btn { display: inline-block; background: var(--primary-purple); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: background 0.2s; }
-        .btn:hover { background: var(--dark-navy); }
-
-        .contact-section { background: var(--light-bg); }
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--grid-gap); }
-        .contact-card { background: var(--white); padding: 25px; border-radius: var(--border-radius); text-align: center; border-top: 4px solid var(--card-accent, var(--primary-purple)); }
-        .contact-icon { font-size: 1.8rem; color: var(--card-accent, var(--primary-purple)); margin-bottom: 10px; }
-        .contact-title { font-weight: 600; margin-bottom: 5px; }
-        .contact-text { color: var(--text-light); font-size: 0.95rem; }
-
-        .footer { background: var(--dark-navy); color: #94a3b8; padding: 50px 0; text-align: center; font-size: 0.9rem; }
-        .footer a { color: #cbd5e1; text-decoration: none; }
-        .footer a:hover { color: var(--white); }
-        .footer-links { display: flex; justify-content: center; gap: 20px; margin-top: 15px; flex-wrap: wrap; }
-
-        @media (max-width: 768px) {
-            :root { --card-padding: 25px; --grid-gap: 20px; }
-            .hero-title { font-size: 2.2rem; }
-            .hero-subtitle { font-size: 1rem; }
-            .section-title { font-size: 1.8rem; }
-            .section { padding: 60px 0; }
-            .founder-container { flex-direction: column; text-align: center; }
-            .nav-links { display: none; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+    <!-- Header -->
     <header class="header">
         <div class="container navbar">
-            <a href="/" class="nav-logo" id="nav-logo"></a>
+            <a href="#" class="nav-logo" id="nav-logo"></a>
             <nav class="nav-links" id="nav-links"></nav>
             <div class="nav-icons" id="nav-icons"></div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
             <h1 class="hero-title" id="hero-title"></h1>
             <p class="hero-subtitle" id="hero-subtitle"></p>
-            <div class="founder-badge">
-                <img id="hero-avatar" alt="Founder">
-                <span id="hero-badge-text"></span>
-            </div>
+            <div class="founder-badge" id="hero-badge"></div>
         </div>
     </section>
 
+    <!-- About -->
     <section class="section" id="about">
         <div class="container">
             <h2 class="section-title" id="about-title"></h2>
@@ -167,6 +59,7 @@
         </div>
     </section>
 
+    <!-- Research -->
     <section class="section" id="research" style="background-color: var(--white);">
         <div class="container">
             <h2 class="section-title" id="research-title"></h2>
@@ -175,7 +68,8 @@
         </div>
     </section>
 
-    <section class="section" id="tools" style="background-color: var(--light-bg);">
+    <!-- Tools -->
+    <section class="section" id="tools">
         <div class="container">
             <h2 class="section-title" id="tools-title"></h2>
             <p class="section-subtitle" id="tools-subtitle"></p>
@@ -183,42 +77,38 @@
         </div>
     </section>
 
+    <!-- Publications -->
     <section class="section" id="publications" style="background-color: var(--white);">
         <div class="container">
-            <h2 class="section-title" id="pub-title"></h2>
-            <p class="section-subtitle" id="pub-subtitle"></p>
-            <div class="publication-list" id="pub-list"></div>
+            <h2 class="section-title" id="publications-title"></h2>
+            <p class="section-subtitle" id="publications-subtitle"></p>
+            <div class="publication-list" id="publications-list"></div>
         </div>
     </section>
 
+    <!-- Team -->
     <section class="section" id="team">
         <div class="container">
             <h2 class="section-title" id="team-title"></h2>
-            <div class="founder-container">
-                <img id="team-avatar" class="founder-avatar" alt="" loading="lazy">
-                <div class="founder-info">
-                    <h3 id="team-name"></h3>
-                    <p class="role" id="team-role"></p>
-                    <p id="team-bio"></p>
-                    <div class="founder-social" id="team-social"></div>
-                </div>
-            </div>
+            <div class="founder-container" id="team-founder"></div>
             <div class="member-grid" id="team-members"></div>
         </div>
     </section>
 
+    <!-- Community -->
     <section class="section" id="community" style="background-color: var(--white);">
         <div class="container">
             <h2 class="section-title" id="community-title"></h2>
             <p class="section-subtitle" id="community-subtitle"></p>
             <div class="card-grid" id="community-channels"></div>
             <div class="stats-strip" id="community-stats"></div>
-            <h3 class="community-subhead">Contributors &amp; Members</h3>
+            <h3 class="community-subhead" id="community-contrib-head">Contributors &amp; Members</h3>
             <div class="contributor-grid" id="community-contributors"></div>
         </div>
     </section>
 
-    <section class="collab-section">
+    <!-- Collaboration -->
+    <section class="collab-section" id="collab-section">
         <div class="container">
             <h2 id="collab-title"></h2>
             <p id="collab-text"></p>
@@ -226,6 +116,7 @@
         </div>
     </section>
 
+    <!-- Contact -->
     <section class="section contact-section" id="contact">
         <div class="container">
             <h2 class="section-title" id="contact-title"></h2>
@@ -234,6 +125,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p id="footer-copy"></p>
@@ -241,131 +133,8 @@
         </div>
     </footer>
 
+    <!-- Load order matters: content first, then renderer -->
     <script src="content.js"></script>
-    <script>
-    (function render() {
-        const $ = id => document.getElementById(id);
-        const S = SITE;
-
-        const parts = S.shortName.split(" ");
-        $('nav-logo').innerHTML = `<span>${parts[0]}</span> <span class="accent">${parts.slice(1).join(" ")}</span>`;
-        $('nav-links').innerHTML = S.nav.map(n => `<a href="${n.href}">${n.label}</a>`).join("")
-            + (S.partnerLabUrl ? `<a href="${S.partnerLabUrl}" target="_blank" rel="noopener" class="partner-link">
-                 <i class="fas fa-flask"></i> ${S.partnerLabText}</a>` : "");
-        $('nav-icons').innerHTML = [
-            S.github   ? `<a href="${S.github}" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>` : "",
-            S.twitter  ? `<a href="${S.twitter}" target="_blank" rel="noopener" title="Twitter"><i class="fab fa-twitter"></i></a>` : "",
-            S.youtube  ? `<a href="${S.youtube}" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube"></i></a>` : "",
-            S.linkedin ? `<a href="${S.linkedin}" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>` : "",
-        ].join("");
-
-        document.title = `${S.labName} | ${S.tagline}`;
-        $('hero-title').innerHTML = `${S.taglinePart1} <span class="accent">${S.taglinePart2}</span>`;
-        $('hero-subtitle').textContent = S.description;
-        $('hero-avatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(S.founderName)}&background=7C3AED&color=fff&size=28`;
-        $('hero-badge-text').textContent = S.heroBadge;
-
-        function cardHTML(c) {
-            const iconClass = c.icon.includes(' ') ? c.icon : `fas ${c.icon}`;
-            return `<div class="card" style="--card-accent: ${c.color}">
-                <div class="card-icon"><i class="${iconClass}"></i></div>
-                <h3 class="card-title">${c.title}</h3>
-                <p class="card-text">${c.text}</p>
-                ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener" class="card-link">${c.cta || 'Learn More'} <i class="fas fa-arrow-right"></i></a>` : ""}
-            </div>`;
-        }
-        function renderCards(sectionId, sectionKey) {
-            const s = S[sectionKey];
-            $(sectionId + '-title').innerHTML = s.title.replace(/(\w+)$/, '<span class="accent">$1</span>');
-            $(sectionId + '-subtitle').textContent = s.subtitle;
-            $(sectionId + '-cards').innerHTML = s.cards.map(cardHTML).join("");
-        }
-
-        renderCards('about',    'about');
-        renderCards('research', 'research');
-        renderCards('tools',    'tools');
-
-        $('pub-title').innerHTML = S.publications.title.replace(/(\w+)$/, '<span class="accent">$1</span>');
-        $('pub-subtitle').textContent = S.publications.subtitle;
-        $('pub-list').innerHTML = S.publications.items.map(p => `
-            <div class="publication-item">
-                <h3 class="pub-title">${p.title}</h3>
-                <p class="pub-authors"><strong>${p.authors}</strong></p>
-                <p class="pub-journal">${p.journal}</p>
-                ${p.doi ? `<a href="${p.doi}" target="_blank" rel="noopener" class="pub-link">DOI</a>` : ""}
-            </div>`).join("");
-
-        $('team-title').innerHTML = S.team.title.replace(/(\w+)$/, '<span class="accent">$1</span>');
-        $('team-avatar').src = S.team.avatar;
-        $('team-avatar').alt = S.team.name;
-        $('team-name').textContent = S.team.name;
-        $('team-role').textContent = S.team.role;
-        $('team-bio').textContent  = S.team.bio;
-        $('team-social').innerHTML = [
-            S.github ? `<a href="${S.github}" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>` : "",
-            S.email  ? `<a href="mailto:${S.email}" title="Email"><i class="fas fa-envelope"></i></a>` : "",
-            S.team.orcid ? `<a href="${S.team.orcid}" target="_blank" rel="noopener" title="ORCID"><i class="fab fa-orcid"></i></a>` : "",
-        ].join("");
-
-        if (S.team.members && S.team.members.length) {
-            $('team-members').innerHTML = S.team.members.map(m => `
-                <a class="member" href="${m.url}" target="_blank" rel="noopener">
-                    <img src="${m.avatar}" alt="${m.name}" loading="lazy"
-                         onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(m.name)}&background=7C3AED&color=fff&size=90'">
-                    <div class="member-name">${m.name}</div>
-                    <div class="member-role">${m.role}</div>
-                </a>`).join("");
-        }
-
-        $('community-title').innerHTML    = S.community.title.replace(/(\w+)$/, '<span class="accent">$1</span>');
-        $('community-subtitle').textContent = S.community.subtitle;
-
-        $('community-channels').innerHTML = S.community.channels.map(c => {
-            const iconClass = c.icon.includes(' ') ? c.icon : `fas ${c.icon}`;
-            return `<div class="card" style="--card-accent: ${c.color}">
-                <div class="card-icon"><i class="${iconClass}"></i></div>
-                <h3 class="card-title">${c.title}</h3>
-                <p class="card-text">${c.text}</p>
-                <a href="${c.link}" target="_blank" rel="noopener" class="card-link">${c.cta} <i class="fas fa-arrow-right"></i></a>
-            </div>`;
-        }).join("");
-
-        if (S.community.stats && S.community.stats.length) {
-            $('community-stats').innerHTML = S.community.stats.map(s => `
-                <div>
-                    <div class="stat-value">${s.value}</div>
-                    <div class="stat-label">${s.label}</div>
-                </div>`).join("");
-        } else {
-            $('community-stats').style.display = 'none';
-        }
-
-        $('community-contributors').innerHTML = S.community.contributors.map(p => `
-            <a class="contributor" href="${p.url}" target="_blank" rel="noopener">
-                <img src="${p.avatar}" alt="${p.name}" loading="lazy"
-                     onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(p.name)}&background=7C3AED&color=fff&size=90'">
-                <div class="contributor-name">${p.name}</div>
-                <div class="contributor-role">${p.role}</div>
-            </a>`).join("");
-
-        $('collab-title').innerHTML = S.collab.title.replace(/(EcoBio Lab|[\w]+)$/, '<span class="accent">$1</span>');
-        $('collab-text').textContent = S.collab.text;
-        $('collab-btn').href = S.partnerLabUrl;
-        $('collab-btn').innerHTML = `<i class="fas fa-external-link-alt"></i> ${S.collab.cta}`;
-
-        $('contact-title').innerHTML = S.contact.title.replace(/(\w+)$/, '<span class="accent">$1</span>');
-        $('contact-subtitle').textContent = S.contact.subtitle;
-        $('contact-grid').innerHTML = S.contact.cards.map(c => `
-            <div class="contact-card" style="--card-accent:${c.color}">
-                <div class="contact-icon"><i class="fas ${c.icon}"></i></div>
-                <h3 class="contact-title">${c.title}</h3>
-                <p class="contact-text">${c.text}</p>
-            </div>`).join("");
-
-        $('footer-copy').textContent = S.footer.copyright;
-        $('footer-links').innerHTML = S.nav.map(n => `<a href="${n.href}">${n.label}</a>`).join("")
-            + (S.partnerLabUrl ? `<a href="${S.partnerLabUrl}" target="_blank" rel="noopener">${S.partnerLabText}</a>` : "");
-    })();
-    </script>
+    <script src="render.js"></script>
 </body>
 </html>
