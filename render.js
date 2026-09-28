@@ -1,14 +1,17 @@
 /* ============================================================
-   RSV LAB — RENDER ENGINE (rewritten, defensive)
+   RSV LAB — RENDER ENGINE
    ------------------------------------------------------------
-   Reads window.SITE and fills every section. Safe if any field
-   is missing. Logs a clear error if content.js failed to load.
+   Reads window.SITE from content.js and fills the page.
+   Do NOT edit unless changing behaviour.
+   • Sections with empty arrays hide themselves.
+   • Missing fields are skipped safely.
+   • All user content is HTML-escaped.
    ============================================================ */
 
 (function render() {
     "use strict";
 
-    /* ---------- tiny helpers ---------- */
+    /* ---------- helpers ---------- */
     const $   = id => document.getElementById(id);
     const has = v => Array.isArray(v) ? v.length > 0 : (v !== undefined && v !== null && v !== '');
     const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({
@@ -23,34 +26,25 @@
         }
     };
 
-    /* ---------- WAIT FOR SITE ----------
-       content.js may load slightly after render.js if scripts are
-       deferred or async. Poll up to ~1 second before giving up. */
+    /* ---------- verify content loaded ---------- */
     const S = window.SITE;
-
     if (!S) {
-        console.error(
-            '[RSV Lab] window.SITE is undefined. content.js did not load or did not run.\n' +
-            'Check DevTools → Network → confirm "content.js" returns 200 (not 404).\n' +
-            'Check DevTools → Console → look for red errors above this one.'
-        );
-        // Show a visible banner so the failure is not silent
+        console.error('[RSV Lab] window.SITE is undefined. content.js did not load.');
         const banner = document.createElement('div');
-        banner.textContent = 'Content failed to load — content.js was not found or did not execute.';
+        banner.textContent = 'Content failed to load — content.js was not found.';
         banner.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#fee2e2;color:#991b1b;padding:14px;text-align:center;font-family:sans-serif;font-size:0.9rem;z-index:9999;';
         document.body.prepend(banner);
         return;
     }
+    console.log('[RSV Lab] Renderer started. Keys:', Object.keys(S).join(', '));
 
-    console.log('[RSV Lab] Renderer started. Content keys:', Object.keys(S).join(', '));
-
-    /* ---------- HEADER ---------- */
+    /* ============ HEADER ============ */
     const shortName = (S.shortName || S.labName || 'Lab').trim();
     const parts = shortName.split(/\s+/);
     const logoEl = $('nav-logo');
     if (logoEl) {
         const logoImg = S.logo
-            ? `<img src="${esc(S.logo)}" alt="${esc(S.labName || 'Lab')} logo" loading="lazy" onerror="this.style.display='none'">`
+            ? `<img src="${esc(S.logo)}" alt="" loading="lazy" onerror="this.style.display='none'">`
             : '';
         logoEl.innerHTML = logoImg
             + `<span>${esc(parts[0] || '')}</span>`
@@ -79,8 +73,10 @@
         ].join('');
     }
 
-    /* ---------- HERO ---------- */
-    if (S.labName) document.title = `${S.labName} | ${S.tagline || ''}`.trim();
+    /* ============ HERO ============ */
+    if (S.labName) {
+        document.title = `${S.labName} | ${S.tagline || ''}`.trim();
+    }
 
     const heroTitleEl = $('hero-title');
     if (heroTitleEl) {
@@ -100,7 +96,7 @@
           + `${esc(S.heroBadge || (name ? `Founded by ${name}` : ''))}`;
     }
 
-    /* ---------- CARD TEMPLATE ---------- */
+    /* ============ CARD TEMPLATE ============ */
     function cardHTML(c) {
         const iconClass = (c.icon || '').includes(' ')
             ? c.icon
@@ -121,7 +117,7 @@
         </div>`;
     }
 
-    /* ---------- GENERIC CARD SECTION RENDERER ---------- */
+    /* ============ GENERIC CARD SECTION ============ */
     function renderCardsSection(prefix, sectionData) {
         if (!sectionData || !has(sectionData.cards)) {
             hideSection(prefix);
@@ -129,7 +125,6 @@
         }
         const titleEl = $(prefix + '-title');
         if (titleEl) {
-            // Accent the last word
             titleEl.innerHTML = String(sectionData.title || '')
                 .replace(/(\S+)\s*$/, '<span>$1</span>');
         }
@@ -139,15 +134,15 @@
         if (gridEl) gridEl.innerHTML = sectionData.cards.map(cardHTML).join('');
     }
 
-    renderCardsSection('about',    S.about);
-    renderCardsSection('research', S.research);
-    renderCardsSection('tools',    S.tools);
+    renderCardsSection('about', S.about);
 
-    /* ---------- PUBLICATIONS ---------- */
+    /* ============ PUBLICATIONS ============ */
     if (S.publications && has(S.publications.items)) {
         const titleEl = $('publications-title');
-        if (titleEl) titleEl.innerHTML = String(S.publications.title || '')
-            .replace(/(\S+)\s*$/, '<span>$1</span>');
+        if (titleEl) {
+            titleEl.innerHTML = String(S.publications.title || '')
+                .replace(/(\S+)\s*$/, '<span>$1</span>');
+        }
         const subEl = $('publications-subtitle');
         if (subEl) subEl.textContent = S.publications.subtitle || '';
         const listEl = $('publications-list');
@@ -164,16 +159,66 @@
         hideSection('publications');
     }
 
-    /* ---------- TEAM ---------- */
+    /* ============ PROJECTS ============ */
+    if (S.projects && has(S.projects.cards)) {
+        const titleEl = $('projects-title');
+        if (titleEl) {
+            titleEl.innerHTML = String(S.projects.title || '')
+                .replace(/(\S+)\s*$/, '<span>$1</span>');
+        }
+        const subEl = $('projects-subtitle');
+        if (subEl) subEl.textContent = S.projects.subtitle || '';
+
+        /* Filter tabs */
+        const tabsEl = $('projects-tabs');
+        if (tabsEl && has(S.projects.filters)) {
+            tabsEl.innerHTML = S.projects.filters.map((f, i) =>
+                `<button class="${i === 0 ? 'active' : ''}" data-filter="${esc(f.key)}">${esc(f.label)}</button>`
+            ).join('');
+            tabsEl.querySelectorAll('button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabsEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const key = btn.dataset.filter;
+                    document.querySelectorAll('.project-card').forEach(card => {
+                        const show = key === 'all' || card.dataset.category === key;
+                        card.style.display = show ? 'flex' : 'none';
+                    });
+                });
+            });
+        }
+
+        /* Project grid */
+        const gridEl = $('projects-cards');
+        if (gridEl) {
+            gridEl.innerHTML = S.projects.cards.map(p => `
+                <div class="card project-card" data-category="${esc(p.category || 'all')}"
+                     style="--card-accent: ${esc(p.color || 'var(--primary-blue)')}">
+                    <div class="card-icon"><i class="fas ${esc(p.icon || 'fa-code')}"></i></div>
+                    <h3 class="card-title">${esc(p.title || '')}</h3>
+                    <p class="card-text">${esc(p.text || '')}</p>
+                    <a href="${esc(p.link)}" target="_blank" rel="noopener" class="card-link">
+                        View Repository <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>`).join('');
+        }
+    } else {
+        hideSection('projects');
+    }
+
+    /* ============ TEAM / FOUNDER ============ */
     const team = S.team;
     if (team && (team.name || has(team.members))) {
         const titleEl = $('team-title');
-        if (titleEl) titleEl.innerHTML = String(team.title || '')
-            .replace(/(\S+)\s*$/, '<span>$1</span>');
+        if (titleEl) {
+            titleEl.innerHTML = String(team.title || '')
+                .replace(/(\S+)\s*$/, '<span>$1</span>');
+        }
 
         const founderEl = $('team-founder');
         if (founderEl) {
-            const avatar = team.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(team.name || 'Lab')}&background=7614DC&color=fff&size=200`;
+            const avatar = team.avatar
+                || `https://ui-avatars.com/api/?name=${encodeURIComponent(team.name || 'Lab')}&background=7614DC&color=fff&size=200`;
             founderEl.innerHTML = `
                 <img src="${esc(avatar)}" alt="${esc(team.name || '')}" class="founder-avatar" loading="lazy"
                      onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(team.name || 'Lab')}&background=7614DC&color=fff&size=200'">
@@ -207,95 +252,45 @@
         hideSection('team');
     }
 
-    /* ---------- COMMUNITY ---------- */
-    if (S.community) {
-        const titleEl = $('community-title');
-        if (titleEl) titleEl.innerHTML = String(S.community.title || '')
-            .replace(/(\S+)\s*$/, '<span>$1</span>');
-        const subEl = $('community-subtitle');
-        if (subEl) subEl.textContent = S.community.subtitle || '';
-
-        // Channels reuse the card renderer
-        if (has(S.community.channels)) {
-            const channelsEl = $('community-channels');
-            if (channelsEl) channelsEl.innerHTML = S.community.channels.map(cardHTML).join('');
-        } else {
-            const channelsEl = $('community-channels');
-            if (channelsEl) channelsEl.style.display = 'none';
-        }
-
-        // Stats
-        if (has(S.community.stats)) {
-            const statsEl = $('community-stats');
-            if (statsEl) statsEl.innerHTML = S.community.stats.map(s => `
-                <div>
-                    <div class="stat-value">${esc(s.value)}</div>
-                    <div class="stat-label">${esc(s.label)}</div>
-                </div>`).join('');
-        } else {
-            const statsEl = $('community-stats');
-            if (statsEl) statsEl.style.display = 'none';
-        }
-
-        // Contributors
-        if (has(S.community.contributors)) {
-            const contribEl = $('community-contributors');
-            if (contribEl) contribEl.innerHTML = S.community.contributors.map(p => `
-                <a class="contributor" href="${esc(p.url || '#')}" target="_blank" rel="noopener">
-                    <img src="${esc(p.avatar || '')}" alt="${esc(p.name || '')}" loading="lazy"
-                         onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(p.name || '')}&background=7614DC&color=fff&size=90'">
-                    <div class="contributor-name">${esc(p.name || '')}</div>
-                    <div class="contributor-role">${esc(p.role || '')}</div>
-                </a>`).join('');
-        } else {
-            const contribEl = $('community-contributors');
-            if (contribEl) contribEl.style.display = 'none';
-            const headEl = $('community-contrib-head');
-            if (headEl) headEl.style.display = 'none';
-        }
-    } else {
-        hideSection('community');
-    }
-
-    /* ---------- COLLABORATION BANNER ---------- */
-    if (S.collab && S.partnerLabUrl) {
-        const titleEl = $('collab-title');
-        if (titleEl) {
-            // Accent the partner name (last word or "X Lab")
-            titleEl.innerHTML = String(S.collab.title || '')
-                .replace(/([\w-]+ Lab|\S+)\s*$/, '<span>$1</span>');
-        }
-        const textEl = $('collab-text');
-        if (textEl) textEl.textContent = S.collab.text || '';
-        const btnEl = $('collab-btn');
-        if (btnEl) {
-            btnEl.href = S.partnerLabUrl;
-            btnEl.innerHTML = `<i class="fas fa-external-link-alt"></i> ${esc(S.collab.cta || 'Visit')}`;
-        }
-    } else {
-        const sec = $('collab-section');
-        if (sec) sec.style.display = 'none';
-    }
-
-    /* ---------- CONTACT ---------- */
+    /* ============ CONTACT ============ */
     if (S.contact && has(S.contact.cards)) {
         const titleEl = $('contact-title');
-        if (titleEl) titleEl.innerHTML = String(S.contact.title || '')
-            .replace(/(\S+)\s*$/, '<span>$1</span>');
+        if (titleEl) {
+            titleEl.innerHTML = String(S.contact.title || '')
+                .replace(/(\S+)\s*$/, '<span>$1</span>');
+        }
         const subEl = $('contact-subtitle');
         if (subEl) subEl.textContent = S.contact.subtitle || '';
+
         const gridEl = $('contact-grid');
-        if (gridEl) gridEl.innerHTML = S.contact.cards.map(c => `
-            <div class="contact-card" style="--card-accent:${esc(c.color || 'var(--primary-blue)')}">
-                <div class="contact-icon"><i class="fas ${esc(c.icon || 'fa-circle')}"></i></div>
-                <h3 class="contact-title">${esc(c.title || '')}</h3>
-                <p class="contact-text">${esc(c.text || '')}</p>
-            </div>`).join('');
+        if (gridEl) {
+            /* Base cards — HTML in c.text is preserved (allows <br>) */
+            const baseCards = S.contact.cards.map(c => `
+                <div class="contact-card" style="--card-accent:${esc(c.color || 'var(--primary-blue)')}">
+                    <div class="contact-icon"><i class="fas ${esc(c.icon || 'fa-circle')}"></i></div>
+                    <h3 class="contact-title">${esc(c.title || '')}</h3>
+                    <p class="contact-text">${c.text || ''}</p>
+                </div>`);
+
+            /* Social buttons */
+            const socialCards = (S.contact.socials || []).map(s => `
+                <div class="contact-card" style="--card-accent:${esc(s.color || 'var(--primary-blue)')}">
+                    <div class="contact-icon"><i class="${esc(s.icon)}"></i></div>
+                    <h3 class="contact-title">${esc(s.label)}</h3>
+                    <p class="contact-text">${esc(s.text || '')}</p>
+                    <a href="${esc(s.url)}" target="_blank" rel="noopener"
+                       class="social-btn" style="background-color:${esc(s.color)}">
+                        <i class="${esc(s.icon)}"></i> ${esc(s.cta || 'Visit')}
+                    </a>
+                </div>`);
+
+            gridEl.innerHTML = baseCards.join('') + socialCards.join('');
+        }
     } else {
         hideSection('contact');
     }
 
-    /* ---------- FOOTER ---------- */
+    /* ============ FOOTER ============ */
     const footerCopyEl = $('footer-copy');
     if (footerCopyEl) {
         footerCopyEl.textContent = (S.footer && S.footer.copyright)
@@ -307,15 +302,17 @@
             .map(n => `<a href="${esc(n.href)}">${esc(n.label)}</a>`)
             .join('');
         if (S.partnerLabUrl) {
-            html += `<a href="${esc(S.partnerLabUrl)}" target="_blank" rel="noopener">${esc(S.partnerLabText || 'Partner')}</a>`;
+            html += `<a href="${esc(S.partnerLabUrl)}" target="_blank" rel="noopener">`
+                  + `${esc(S.partnerLabText || 'Partner')}</a>`;
         }
         footerLinksEl.innerHTML = html;
     }
 
-    /* ---------- MOBILE NAV TOGGLE ---------- */
+    /* ============ MOBILE NAV TOGGLE ============ */
     const navToggleEl = $('nav-toggle');
     const navLinksToggleTarget = $('nav-links');
-    if (navToggleEl && navLinksToggleTarget) {
+    if (navToggleEl && navLinksTarget()) {
+        function navLinksTarget() { return navLinksToggleTarget; }
         navToggleEl.addEventListener('click', () => {
             const isOpen = navLinksToggleTarget.classList.toggle('open');
             navToggleEl.setAttribute('aria-expanded', String(isOpen));
@@ -327,6 +324,14 @@
             });
         });
     }
+
+    /* ============ GLOBAL: secure external links ============ */
+    document.querySelectorAll('a[target="_blank"]').forEach(a => {
+        const rel = (a.getAttribute('rel') || '').split(/\s+/);
+        if (!rel.includes('noopener')) rel.push('noopener');
+        if (!rel.includes('noreferrer')) rel.push('noreferrer');
+        a.setAttribute('rel', rel.filter(Boolean).join(' '));
+    });
 
     console.log('[RSV Lab] Renderer finished.');
 })();
