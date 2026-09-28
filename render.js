@@ -178,7 +178,61 @@
             `<span class="hero-highlight"><i class="fas ${esc(h.icon)}"></i> ${esc(h.label)}</span>`
         ).join('');
     }
+   
+       /* ============================================================
+       NOTICE BOARD — update + deadline pills
+       ============================================================
+       
+       Renders the two notice pills above the hero title.
+       Each pill: pulsing dot + label + message + optional date.
+       If a link is present, the whole pill becomes clickable.
+       
+       Behaviour when data is missing:
+         • S.topNotices missing      → hide the whole bar
+         • update & deadline both null → hide the whole bar
+         • update null only          → show deadline only
+         • deadline null only        → show update only
+       ============================================================ */
 
+    const topNoticesEl = $('top-notices');
+    if (topNoticesEl) {
+        /* If content.js has no topNotices block, hide the empty div */
+        if (!S.topNotices) {
+            topNoticesEl.style.display = 'none';
+        } else {
+            /* ---- Helper: build one pill ---- */
+            const buildNotice = (item, variant) => {
+                if (!item) return '';
+
+                /* Append "— date" if a date is present */
+                const datePart = item.date
+                    ? ` <span class="notice-date">— ${esc(item.date)}</span>`
+                    : '';
+
+                /* Inner content of the pill */
+                const inner =
+                    `<span class="notice-dot"></span>` +
+                    `<span class="notice-label">${esc(item.label || '')}</span>` +
+                    `<span class="notice-text">${esc(item.text || '')}${datePart}</span>`;
+
+                /* If a link exists → render as <a>, otherwise <div> */
+                return item.link
+                    ? `<a class="top-notice ${variant}" href="${esc(item.link)}" target="_blank" rel="noopener">${inner}</a>`
+                    : `<div class="top-notice ${variant}">${inner}</div>`;
+            };
+
+            /* ---- Build both pills ---- */
+            const updateHTML   = buildNotice(S.topNotices.update,   'notice-update');
+            const deadlineHTML = buildNotice(S.topNotices.deadline, 'notice-deadline');
+
+            /* ---- Inject or hide ---- */
+            if (updateHTML || deadlineHTML) {
+                topNoticesEl.innerHTML = updateHTML + deadlineHTML;
+            } else {
+                topNoticesEl.style.display = 'none';
+            }
+        }
+    }
     /* ============================================================
        SECTION C — CARD TEMPLATE
        ============================================================
