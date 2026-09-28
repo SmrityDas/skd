@@ -655,6 +655,16 @@ const SITE = {
 
     /* ORCID link (shows an ORCID icon). */
     orcid: "https://orcid.org/0009-0004-2253-7527",
+      
+   title: "Meet the Co-Founder",
+         name:   "Sazal Das",
+         role:   "Assistant Engineer",
+         bio:    "EEE, University of Chittagong, Bangladesh.",
+         avatar: "https://github.com/sazaldas.png",
+         orcid: "https://orcid.org/0009-0004-4220-4287",
+         url:    "https://github.com/sazaldas",
+          
+      
 
     /* -------- Additional team members (optional) --------
        Each member has: name, role, avatar (optional), url (optional).
