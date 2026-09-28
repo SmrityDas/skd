@@ -708,7 +708,7 @@ const SITE = {
         icon:  "fa-envelope",
         color: "var(--primary-orange)",
         title: "Email",
-        text:  "kamol.mbio@gmail.com"<br>"rsv8lab@gmail.com"
+        text:  "kamol.mbio@gmail.com<br>rsv8lab@gmail.com"
       },
     ],
 
