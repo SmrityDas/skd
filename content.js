@@ -655,17 +655,7 @@ const SITE = {
 
     /* ORCID link (shows an ORCID icon). */
     orcid: "https://orcid.org/0009-0004-2253-7527",
-     {
-   title: "Meet the Co-Founder",
-         name:   "Sazal Das",
-         role:   "Assistant Engineer",
-         bio:    "EEE, University of Chittagong, Bangladesh.",
-         avatar: "https://github.com/sazaldas.png",
-         orcid: "https://orcid.org/0009-0004-4220-4287",
-         url:    "https://github.com/sazaldas",
-     },   
-      
-
+       
     /* -------- Additional team members (optional) --------
        Each member has: name, role, avatar (optional), url (optional).
        Set members: [] to hide the grid entirely. */
@@ -677,6 +667,12 @@ const SITE = {
       //   avatar: "https://github.com/ayesha.png",       // optional
       //   url:    "https://github.com/ayesha"            // optional
       // },
+       {
+         name:   "RSV Lab",
+         role:   "Hosting Organization",
+         avatar: "https://github.com/rsv8lab.png",
+        
+     }, 
        {
          name:   "Sazal Das",
          role:   "Assistant Engineer",
