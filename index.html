@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSV Lab | ML-assisted AMR Surveillance & AST Analysis</title>
-    <meta name="description" content="RSV Lab — an MS thesis and bioinformatics research effort building open tools for antimicrobial susceptibility testing (AST), CLSI/EUCAST interpretation, and ML-assisted AMR surveillance. Founded by Kamol Das, University of Chittagong.">
+    <title>RSV Lab | Official Website</title>
+    <meta name="description" content="RSV Lab — building open tools for antimicrobial susceptibility testing (AST), CLSI/EUCAST interpretation, and ML-assisted AMR surveillance. Founded by Kamol Das.">
     <link rel="canonical" href="https://rsv8lab-github-io.pages.dev/">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#06283d">
@@ -14,9 +14,14 @@
     <meta property="og:description" content="Open tools for AST analysis and ML-assisted AMR surveillance in Bangladesh.">
     <meta property="og:url" content="https://rsv8lab-github-io.pages.dev/">
     <meta property="og:image" content="https://rsv8lab-github-io.pages.dev/rsvlab-logo.png">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:site_name" content="RSV Lab">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RSV Lab | AMR Surveillance & AST Analysis">
+    <meta name="twitter:description" content="Open tools for AST analysis and AMR surveillance.">
+    <meta name="twitter:image" content="https://rsv8lab-github-io.pages.dev/rsvlab-logo.png">
 
     <link rel="icon" type="image/png" href="rsvlab-logo.png">
+    <link rel="apple-touch-icon" href="rsvlab-logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,9 +29,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Structured data for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ResearchOrganization",
+      "name": "RSV Lab",
+      "url": "https://rsv8lab-github-io.pages.dev/",
+      "logo": "https://rsv8lab-github-io.pages.dev/rsvlab-logo.png",
+      "description": "An integrated computational framework for microbiology, AST, and bioinformatics research.",
+      "founder": {
+        "@type": "Person",
+        "name": "Kamol Das",
+        "affiliation": "University of Chittagong"
+      }
+    }
+    </script>
 </head>
 <body>
 
+    <!-- HEADER -->
     <header class="header">
         <div class="container navbar">
             <a href="#" class="nav-logo" id="nav-logo"></a>
@@ -38,14 +61,18 @@
         </div>
     </header>
 
+    <!-- HERO -->
     <section class="hero">
         <div class="container">
             <h1 class="hero-title" id="hero-title"></h1>
             <p class="hero-subtitle" id="hero-subtitle"></p>
             <div class="founder-badge" id="hero-badge"></div>
+            <div class="hero-ctas" id="hero-ctas"></div>
+            <div class="hero-highlights" id="hero-highlights"></div>
         </div>
     </section>
 
+    <!-- ABOUT -->
     <section class="section" id="about">
         <div class="container">
             <h2 class="section-title" id="about-title"></h2>
@@ -54,6 +81,7 @@
         </div>
     </section>
 
+    <!-- RESEARCH -->
     <section class="section" id="research" style="background-color: var(--white);">
         <div class="container">
             <h2 class="section-title" id="research-title"></h2>
@@ -62,6 +90,7 @@
         </div>
     </section>
 
+    <!-- TOOLS -->
     <section class="section" id="tools">
         <div class="container">
             <h2 class="section-title" id="tools-title"></h2>
@@ -70,6 +99,7 @@
         </div>
     </section>
 
+    <!-- PUBLICATIONS -->
     <section class="section" id="publications" style="background-color: var(--white);">
         <div class="container">
             <h2 class="section-title" id="publications-title"></h2>
@@ -78,7 +108,18 @@
         </div>
     </section>
 
-    <section class="section" id="team">
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title" id="projects-title"></h2>
+            <p class="section-subtitle" id="projects-subtitle"></p>
+            <div class="project-tabs" id="projects-tabs"></div>
+            <div class="card-grid" id="projects-cards"></div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section" id="team" style="background-color: var(--white);">
         <div class="container">
             <h2 class="section-title" id="team-title"></h2>
             <div class="founder-container" id="team-founder"></div>
@@ -86,25 +127,7 @@
         </div>
     </section>
 
-    <section class="section" id="community" style="background-color: var(--white);">
-        <div class="container">
-            <h2 class="section-title" id="community-title"></h2>
-            <p class="section-subtitle" id="community-subtitle"></p>
-            <div class="card-grid" id="community-channels"></div>
-            <div class="stats-strip" id="community-stats"></div>
-            <h3 class="community-subhead" id="community-contrib-head">Contributors &amp; Members</h3>
-            <div class="contributor-grid" id="community-contributors"></div>
-        </div>
-    </section>
-
-    <section class="collab-section" id="collab-section">
-        <div class="container">
-            <h2 id="collab-title"></h2>
-            <p id="collab-text"></p>
-            <a id="collab-btn" class="btn" target="_blank" rel="noopener"></a>
-        </div>
-    </section>
-
+    <!-- CONTACT -->
     <section class="section contact-section" id="contact">
         <div class="container">
             <h2 class="section-title" id="contact-title"></h2>
@@ -113,13 +136,21 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
-            <p id="footer-copy"></p>
+            <p class="footer-tagline" id="footer-tagline"></p>
+            <p class="footer-copy" id="footer-copy"></p>
             <div class="footer-links" id="footer-links"></div>
         </div>
     </footer>
 
+    <!-- Back-to-top button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Load content first, then render -->
     <script src="content.js"></script>
     <script src="render.js"></script>
 </body>
