@@ -368,7 +368,7 @@ const SITE = {
      ------------------------------------------------------------ */
   research: {
     title:    "Research Focus",
-    subtitle: "Core areas of the MS thesis and PhD track.",
+    subtitle: "Core areas of the project and PhD track.",
 
     cards: [
       /* ---------- Card 1 ---------- */
@@ -449,6 +449,14 @@ const SITE = {
         title: "Verified CLSI Breakpoint Table",
         text:  "A hand-checked breakpoint dataset cross-verified against CLSI M100-Ed36 (2026)."
         // No link → no button shown.
+      },
+      {
+        icon:  "fa-desktop",
+        color: "var(--primary-purple)",
+        title: "RSV Laboratory Advanced AST Analysis Tool (rsv_4.6_skd) — User Manual",
+        text:  "This manual provides comprehensive documentation for the RSV Laboratory Advanced AST Analysis Tool, a publication-ready software platform designed for clinical microbiology laboratories. The tool facilitates the automated interpretation of Antimicrobial Susceptibility Testing (AST) results by integrating CLSI M100 (2026) standards.",
+        link:  "https://zenodo.org/records/21620688",   // opens in new tab
+        cta:   "View on Zenodo"                 // button text
       },
     ],
   },
@@ -659,12 +667,14 @@ const SITE = {
       //   avatar: "https://github.com/ayesha.png",       // optional
       //   url:    "https://github.com/ayesha"            // optional
       // },
-      // {
-      //   name:   "Mahmud Hasan",
-      //   role:   "Machine Learning Engineer",
-      //   avatar: "https://github.com/mahmud.png",
-      //   url:    "https://github.com/mahmud"
-      // },
+       {
+         name:   "Sazal Das",
+         role:   "Machine Learning Engineer",
+         avatar: "https://github.com/sazaldas.png",
+         orcid: "https://orcid.org/0009-0004-4220-4287",
+         url:    "https://github.com/sazaldas"
+          
+       },
     ],
   },
 
