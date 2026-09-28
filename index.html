@@ -3,34 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSV Lab | Official Website</title>
-    <meta name="description" content="RSV Lab advances antimicrobial susceptibility testing, AMR surveillance, and bioinformatics research. Founded by Kamol Das, University of Chittagong.">
+    <title>RSV Lab | Official Website — AMR Surveillance, AST & Bioinformatics</title>
+    <meta name="description" content="RSV Lab builds open-source tools for antimicrobial susceptibility testing (AST), CLSI/EUCAST interpretation, and ML-assisted AMR surveillance. Founded by Kamol Das, University of Chittagong.">
     <link rel="canonical" href="https://rsv8lab-github-io.pages.dev/">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#06283d">
 
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="RSV Lab | Official Website">
-    <meta property="og:description" content="Advancing antimicrobial susceptibility testing, AMR surveillance, and bioinformatics research.">
+    <meta property="og:title" content="RSV Lab | AMR Surveillance, AST & Bioinformatics">
+    <meta property="og:description" content="Open-source tools for AST analysis and ML-assisted AMR surveillance in Bangladesh.">
     <meta property="og:url" content="https://rsv8lab-github-io.pages.dev/">
-    <meta property="og:image" content="https://rsv8lab.github.io/rsvlab-logo.png">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://rsv8lab-github-io.pages.dev/rsvlab-logo.png">
+    <meta property="og:site_name" content="RSV Lab">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RSV Lab | AMR Surveillance, AST & Bioinformatics">
+    <meta name="twitter:description" content="Open-source tools for AST analysis and AMR surveillance.">
+    <meta name="twitter:image" content="https://rsv8lab-github-io.pages.dev/rsvlab-logo.png">
 
-    <!-- Favicon: your own logo, embedded as base64 so no hosting is required -->
-    <link rel="icon" type="image/png" href="data:image/png;base64,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">
-    <!-- Apple touch icon: separate file, upload apple-touch-icon.png alongside index.html -->
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="rsvlab-logo.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Structured data: Research Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ResearchOrganization",
+      "name": "RSV Lab",
+      "url": "https://rsv8lab-github-io.pages.dev/",
+      "logo": "https://rsv8lab-github-io.pages.dev/rsvlab-logo.png",
+      "description": "An integrated computational framework for microbiology, AST, and bioinformatics research.",
+      "founder": {
+        "@type": "Person",
+        "name": "Kamol Das",
+        "affiliation": "University of Chittagong",
+        "sameAs": [
+          "https://github.com/KamolDas",
+          "https://orcid.org/0009-0004-2253-7527"
+        ]
+      },
+      "sameAs": [
+        "https://github.com/rsv8lab",
+        "https://www.facebook.com/profile.php?id=100090153347276",
+        "https://www.youtube.com/@RSVLab"
+      ]
+    }
+    </script>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- ============ HEADER ============ -->
     <header class="header">
         <div class="container navbar">
             <a href="#" class="nav-logo" id="nav-logo"></a>
@@ -42,7 +74,7 @@
         </div>
     </header>
 
-    <!-- Hero -->
+    <!-- ============ HERO ============ -->
     <section class="hero">
         <div class="container">
             <h1 class="hero-title" id="hero-title"></h1>
@@ -51,7 +83,7 @@
         </div>
     </section>
 
-    <!-- About -->
+    <!-- ============ ABOUT ============ -->
     <section class="section" id="about">
         <div class="container">
             <h2 class="section-title" id="about-title"></h2>
@@ -60,25 +92,7 @@
         </div>
     </section>
 
-    <!-- Research -->
-    <section class="section" id="research" style="background-color: var(--white);">
-        <div class="container">
-            <h2 class="section-title" id="research-title"></h2>
-            <p class="section-subtitle" id="research-subtitle"></p>
-            <div class="card-grid" id="research-cards"></div>
-        </div>
-    </section>
-
-    <!-- Tools -->
-    <section class="section" id="tools">
-        <div class="container">
-            <h2 class="section-title" id="tools-title"></h2>
-            <p class="section-subtitle" id="tools-subtitle"></p>
-            <div class="card-grid" id="tools-cards"></div>
-        </div>
-    </section>
-
-    <!-- Publications -->
+    <!-- ============ PUBLICATIONS ============ -->
     <section class="section" id="publications" style="background-color: var(--white);">
         <div class="container">
             <h2 class="section-title" id="publications-title"></h2>
@@ -87,8 +101,18 @@
         </div>
     </section>
 
-    <!-- Team -->
-    <section class="section" id="team">
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title" id="projects-title"></h2>
+            <p class="section-subtitle" id="projects-subtitle"></p>
+            <div class="project-tabs" id="projects-tabs"></div>
+            <div class="card-grid" id="projects-cards"></div>
+        </div>
+    </section>
+
+    <!-- ============ TEAM / FOUNDER ============ -->
+    <section class="section" id="team" style="background-color: var(--white);">
         <div class="container">
             <h2 class="section-title" id="team-title"></h2>
             <div class="founder-container" id="team-founder"></div>
@@ -96,28 +120,7 @@
         </div>
     </section>
 
-    <!-- Community -->
-    <section class="section" id="community" style="background-color: var(--white);">
-        <div class="container">
-            <h2 class="section-title" id="community-title"></h2>
-            <p class="section-subtitle" id="community-subtitle"></p>
-            <div class="card-grid" id="community-channels"></div>
-            <div class="stats-strip" id="community-stats"></div>
-            <h3 class="community-subhead" id="community-contrib-head">Contributors &amp; Members</h3>
-            <div class="contributor-grid" id="community-contributors"></div>
-        </div>
-    </section>
-
-    <!-- Collaboration -->
-    <section class="collab-section" id="collab-section">
-        <div class="container">
-            <h2 id="collab-title"></h2>
-            <p id="collab-text"></p>
-            <a id="collab-btn" class="btn" target="_blank" rel="noopener"></a>
-        </div>
-    </section>
-
-    <!-- Contact -->
+    <!-- ============ CONTACT ============ -->
     <section class="section contact-section" id="contact">
         <div class="container">
             <h2 class="section-title" id="contact-title"></h2>
@@ -126,7 +129,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ============ FOOTER ============ -->
     <footer class="footer">
         <div class="container">
             <p id="footer-copy"></p>
