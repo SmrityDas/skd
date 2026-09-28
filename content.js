@@ -708,7 +708,7 @@ const SITE = {
         icon:  "fa-envelope",
         color: "var(--primary-orange)",
         title: "Email",
-        text:  "kamol.mbio@gmail.com"
+        text:  "kamol.mbio@gmail.com"<br>"rsv8lab@gmail.com"
       },
     ],
 
@@ -733,14 +733,14 @@ const SITE = {
         cta:   "Subscribe"
       },
       // ---------- Add more social buttons below ----------
-      // {
-      //   label: "LinkedIn",
-      //   icon:  "fab fa-linkedin",
-      //   url:   "https://linkedin.com/company/rsv-lab",
-      //   color: "#0A66C2",
-      //   text:  "Connect with us professionally.",
-      //   cta:   "Connect"
-      // },
+      {
+         label: "LinkedIn",
+         icon:  "fab fa-linkedin",
+         url:   "https://www.linkedin.com/in/kamol-das-7a4b0b1b7/",
+         color: "#0A66C2",
+         text:  "Connect with us professionally.",
+         cta:   "Connect"
+       },
       // {
       //   label: "GitHub",
       //   icon:  "fab fa-github",
