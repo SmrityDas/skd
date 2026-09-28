@@ -154,7 +154,7 @@ const SITE = {
     },
     deadline: {
       label: "Deadline",
-      text:  "LSHTM PhD application window",
+      text:  " application window",
       date:  "15 Oct 2026",
       link:  ""
     }
