@@ -669,7 +669,8 @@ const SITE = {
       // },
        {
          name:   "Sazal Das",
-         role:   "Machine Learning Engineer",
+         role:   "Assistant Engineer",
+         bio:    "EEE, University of Chittagong, Bangladesh.",
          avatar: "https://github.com/sazaldas.png",
          orcid: "https://orcid.org/0009-0004-4220-4287",
          url:    "https://github.com/sazaldas"
