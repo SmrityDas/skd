@@ -125,6 +125,40 @@ const SITE = {
     label: "View on GitHub",
     href:  "https://github.com/KamolDas"
   },
+     /* ============================================================
+     ▓▓▓  NOTICE BOARD  ▓▓▓
+     ============================================================
+     
+     Small notification pills shown at the top of the hero.
+     
+     • update   → green pill   (latest news)
+     • deadline → amber pill   (upcoming deadline)
+     
+     Each item has:
+       label → short pill text (e.g. "Latest", "Deadline")
+       text  → the message (plain text only — no HTML)
+       date  → optional date suffix (appended as "— {date}")
+       link  → optional URL (makes the whole pill clickable)
+     
+     Hide either one: set it to null.
+     Hide the whole board: set topNotices: null.
+     
+     If both are null, the whole bar hides itself automatically.
+     ------------------------------------------------------------ */
+  topNotices: {
+    update: {
+      label: "Latest",
+      text:  "RSV Lab AST Analysis Tool v2.2 released",
+      date:  "Sept 2026",
+      link:  "https://doi.org/10.5281/zenodo.20589848"
+    },
+    deadline: {
+      label: "Deadline",
+      text:  "LSHTM PhD application window",
+      date:  "15 Oct 2026",
+      link:  ""
+    }
+  },
 
   /* ============================================================
      ▓▓▓  SECTION 3 — HERO HIGHLIGHT CHIPS  ▓▓▓
