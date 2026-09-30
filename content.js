@@ -669,10 +669,19 @@ const SITE = {
       // },
        {
          name:   "RSV Lab",
-         role:   "Hosting Organization",
+         role:   "Hosting Institution",
          avatar: "https://github.com/rsv8lab.png",
         
-     }, 
+     },
+       {
+         name:   "Shamol Das, Senior Officer (IT), Sonali Bank",
+         role:   "Sponsor",
+         bio:    "CSE, HSTU, Bangladesh.",
+         avatar: "https://github.com/sazaldas.png",
+         orcid: "https://orcid.org/0009-0004-4220-4287",
+         url:    "https://github.com/sazaldas"
+          
+       },
        {
          name:   "Sazal Das",
          role:   "Assistant Engineer",
